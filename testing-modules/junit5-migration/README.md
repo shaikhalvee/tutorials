@@ -1,3 +1,2 @@
-### Relevant Articles:
-- [JUnit4 -> JUnit5 migration guide](http://www.baeldung.com/junit4-junit5-migration-guide)
 
+This is the code for the Junit 4 - Junit 5 Migration E-book.

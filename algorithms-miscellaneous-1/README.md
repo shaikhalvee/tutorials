@@ -13,3 +13,6 @@
 - [Find the Middle Element of a Linked List](http://www.baeldung.com/java-linked-list-middle-element)
 - [Calculate Factorial in Java](https://www.baeldung.com/java-calculate-factorial)
 - [Find Substrings That Are Palindromes in Java](https://www.baeldung.com/java-palindrome-substrings)
+- [Find the Longest Substring without Repeating Characters](https://www.baeldung.com/java-longest-substring-without-repeated-characters)
+- [Permutations of an Array in Java](https://www.baeldung.com/java-array-permutations)
+- [Generate Combinations in Java](https://www.baeldung.com/java-combinations-algorithm)

@@ -66,7 +66,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>2.0.7.RELEASE</version>
+            <version>${spring-boot-starter-web.version}</version>
         </dependency>
 
         <dependency>
@@ -87,9 +87,27 @@
         </dependency>
 
         <dependency>
+            <groupId>io.astefanutti.metrics.aspectj</groupId>
+            <artifactId>metrics-aspectj</artifactId>
+            <version>${metrics-aspectj.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>io.astefanutti.metrics.aspectj</groupId>
+            <artifactId>metrics-aspectj-deps</artifactId>
+            <version>${metrics-aspectj.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.11.1</version>
+            <version>${assertj-core.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -102,6 +120,9 @@
         <micrometer.ver>0.12.0.RELEASE</micrometer.ver>
         <fasterxml.jackson.version>2.9.1</fasterxml.jackson.version>
         <spectator-api.version>0.57.1</spectator-api.version>
+		<spring-boot-starter-web.version>2.0.7.RELEASE</spring-boot-starter-web.version>
+		<assertj-core.version>3.11.1</assertj-core.version>
+        <metrics-aspectj.version>1.1.0</metrics-aspectj.version>
     </properties>
 
 </project>
