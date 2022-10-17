@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>libraries-testing</artifactId>
     <name>libraries-testing</name>
@@ -85,6 +85,12 @@
             <version>${jsonassert.version}</version>
         </dependency>
         <dependency>
+            <groupId>uk.org.webcompere</groupId>
+            <artifactId>model-assert</artifactId>
+            <version>${modelassert.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.awaitility</groupId>
             <artifactId>awaitility</artifactId>
             <version>${awaitility.version}</version>
@@ -113,12 +119,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.hamcrest/java-hamcrest -->
-        <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>java-hamcrest</artifactId>
             <version>${java-hamcrest.version}</version>
@@ -129,12 +129,34 @@
             <artifactId>asciidoctor-maven-plugin</artifactId>
             <version>${asciidoctor.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.dbunit</groupId>
+            <artifactId>dbunit</artifactId>
+            <version>${dbunit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>${byte-buddy.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.tngtech.archunit</groupId>
+            <artifactId>archunit-junit5</artifactId>
+            <version>${archunit.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
-
             <plugin>
                 <groupId>net.serenity-bdd.maven.plugins</groupId>
                 <artifactId>serenity-maven-plugin</artifactId>
@@ -149,13 +171,12 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
     </build>
 
     <properties>
         <asciidoctor.version>1.5.7.1</asciidoctor.version>
-		<serenity.version>1.9.9</serenity.version>
+        <serenity.version>1.9.9</serenity.version>
         <serenity.jbehave.version>1.9.0</serenity.jbehave.version>
         <serenity.jira.version>1.9.0</serenity.jira.version>
         <serenity.plugin.version>1.9.27</serenity.plugin.version>
@@ -164,8 +185,10 @@
         <hoverfly-java.version>0.8.1</hoverfly-java.version>
         <spring.version>4.3.8.RELEASE</spring.version>
         <spring-mock-mvc.version>4.1.1</spring-mock-mvc.version>
-        <assertj.version>3.6.2</assertj.version>
         <java-hamcrest.version>2.0.0.0</java-hamcrest.version>
+        <dbunit.version>2.7.0</dbunit.version>
+        <archunit.version>0.14.1</archunit.version>
+        <modelassert.version>1.0.0</modelassert.version>
     </properties>
 
 </project>

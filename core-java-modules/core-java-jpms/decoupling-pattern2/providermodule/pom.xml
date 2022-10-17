@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.providermodule</groupId>
     <artifactId>providermodule</artifactId>
@@ -16,7 +16,7 @@
     <dependencies>
         <dependency>
             <groupId>com.baeldung.servicemodule</groupId>
-            <artifactId>servicemodule</artifactId>
+            <artifactId>servicemodule2</artifactId>
             <version>${servicemodule.version}</version>
         </dependency>
     </dependencies>
@@ -26,13 +26,17 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>${compiler.plugin.version}</version>
+                <configuration>
+                    <source>${source.version}</source>
+                    <target>${target.version}</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>
 
     <properties>
         <servicemodule.version>1.0</servicemodule.version>
-	</properties>
-
+    </properties>
 
 </project>

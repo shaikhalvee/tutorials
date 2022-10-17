@@ -2,6 +2,6 @@
 
 This module contains articles about Netflix. 
 
-### Relevant articles
+### Relevant Articles:
 
-- [Introduction to Netflix Genie](https://github.com/eugenp/tutorials/tree/master/netflix/genie)
+- [Introduction to Netflix Mantis](https://www.baeldung.com/java-netflix-mantis)

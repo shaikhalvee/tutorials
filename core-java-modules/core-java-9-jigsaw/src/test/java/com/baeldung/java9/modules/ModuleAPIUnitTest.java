@@ -2,13 +2,21 @@ package com.baeldung.java9.modules;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
-import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.containsInAnyOrder;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.collection.IsEmptyCollection.empty;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.lang.module.ModuleDescriptor;
-import java.lang.module.ModuleDescriptor.*;
+
+import java.lang.module.ModuleDescriptor.Builder;
+import java.lang.module.ModuleDescriptor.Exports;
+import java.lang.module.ModuleDescriptor.Opens;
+import java.lang.module.ModuleDescriptor.Provides;
+import java.lang.module.ModuleDescriptor.Requires;
 import java.sql.Date;
 import java.sql.Driver;
 import java.util.HashMap;
@@ -17,6 +25,7 @@ import java.util.stream.Collectors;
 
 import org.junit.Before;
 import org.junit.Test;
+
 
 public class ModuleAPIUnitTest {
 
@@ -28,14 +37,9 @@ public class ModuleAPIUnitTest {
 
     @Before
     public void setUp() {
-        Class<HashMap> hashMapClass = HashMap.class;
-        javaBaseModule = hashMapClass.getModule();
-
-        Class<Date> dateClass = Date.class;
-        javaSqlModule = dateClass.getModule();
-
-        Class<Person> personClass = Person.class;
-        module = personClass.getModule();
+        javaBaseModule = HashMap.class.getModule();
+        javaSqlModule = Date.class.getModule();
+        module = Person.class.getModule();
     }
 
     @Test
@@ -74,7 +78,6 @@ public class ModuleAPIUnitTest {
         ModuleLayer javaBaseModuleLayer = javaBaseModule.getLayer();
 
         assertTrue(javaBaseModuleLayer.configuration().findModule(JAVA_BASE_MODULE_NAME).isPresent());
-        assertThat(javaBaseModuleLayer.configuration().modules().size(), is(78));
         assertTrue(javaBaseModuleLayer.parents().get(0).configuration().parents().isEmpty());
     }
 
@@ -108,8 +111,7 @@ public class ModuleAPIUnitTest {
           .collect(Collectors.toSet());
 
         assertThat(javaBaseRequires, empty());
-        assertThat(javaSqlRequires.size(), is(3));
-        assertThat(javaSqlRequiresNames, containsInAnyOrder("java.base", "java.xml", "java.logging"));
+        assertThat(javaSqlRequiresNames, hasItems("java.base", "java.xml", "java.logging"));
     }
 
     @Test
@@ -121,31 +123,26 @@ public class ModuleAPIUnitTest {
                 .map(Provides::service)
                 .collect(Collectors.toSet());
 
-        assertThat(javaBaseProvidesService, contains("java.nio.file.spi.FileSystemProvider"));
+        assertThat(javaBaseProvidesService, hasItem("java.nio.file.spi.FileSystemProvider"));
         assertThat(javaSqlProvides, empty());
     }
 
     @Test
     public void givenModules_whenAccessingModuleDescriptorExports_thenExportsAreReturned() {
-        Set<Exports> javaBaseExports = javaBaseModule.getDescriptor().exports();
         Set<Exports> javaSqlExports = javaSqlModule.getDescriptor().exports();
 
         Set<String> javaSqlExportsSource = javaSqlExports.stream()
           .map(Exports::source)
           .collect(Collectors.toSet());
 
-        assertThat(javaBaseExports.size(), is(108));
-        assertThat(javaSqlExports.size(), is(3));
-        assertThat(javaSqlExportsSource, containsInAnyOrder("java.sql", "javax.transaction.xa", "javax.sql"));
+        assertThat(javaSqlExportsSource, hasItems("java.sql", "javax.sql"));
     }
 
     @Test
     public void givenModules_whenAccessingModuleDescriptorUses_thenUsesAreReturned() {
-        Set<String> javaBaseUses = javaBaseModule.getDescriptor().uses();
         Set<String> javaSqlUses = javaSqlModule.getDescriptor().uses();
 
-        assertThat(javaBaseUses.size(), is(34));
-        assertThat(javaSqlUses, contains("java.sql.Driver"));
+        assertThat(javaSqlUses, hasItem("java.sql.Driver"));
     }
 
     @Test

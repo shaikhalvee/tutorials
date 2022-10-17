@@ -29,6 +29,11 @@ public class UserControllerUnitTest {
     }
 
     @Test
+    public void whenCalledIndex_thenCorrect() {
+        assertThat(userController.showUserList(mockedModel)).isEqualTo("index");
+    }
+
+    @Test
     public void whenCalledshowSignUpForm_thenCorrect() {
         User user = new User("John", "john@domain.com");
 
@@ -41,7 +46,7 @@ public class UserControllerUnitTest {
 
         when(mockedBindingResult.hasErrors()).thenReturn(false);
 
-        assertThat(userController.addUser(user, mockedBindingResult, mockedModel)).isEqualTo("index");
+        assertThat(userController.addUser(user, mockedBindingResult, mockedModel)).isEqualTo("redirect:/index");
     }
 
     @Test
@@ -64,7 +69,7 @@ public class UserControllerUnitTest {
 
         when(mockedBindingResult.hasErrors()).thenReturn(false);
 
-        assertThat(userController.updateUser(1l, user, mockedBindingResult, mockedModel)).isEqualTo("index");
+        assertThat(userController.updateUser(1l, user, mockedBindingResult, mockedModel)).isEqualTo("redirect:/index");
     }
 
     @Test
@@ -78,6 +83,6 @@ public class UserControllerUnitTest {
     
     @Test(expected = IllegalArgumentException.class)
     public void whenCalleddeleteUser_thenIllegalArgumentException() {
-        assertThat(userController.deleteUser(1l, mockedModel)).isEqualTo("index");
+        assertThat(userController.deleteUser(1l, mockedModel)).isEqualTo("redirect:/index");
     }
 }

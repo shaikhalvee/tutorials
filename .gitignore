@@ -73,8 +73,6 @@ ninja/devDb.mv.db
 **/out-tsc
 **/nbproject/
 **/nb-configuration.xml
-core-scala/.cache-main
-core-scala/.cache-tests
 
 
 persistence-modules/hibernate5/transaction.log
@@ -87,7 +85,21 @@ transaction.log
 *-shell.log
 
 apache-cxf/cxf-aegis/baeldung.xml
-apache-fop/src/test/resources/input.xml
-apache-fop/src/test/resources/output_herold.pdf
-apache-fop/src/test/resources/output_html2fo.pdf
-apache-fop/src/test/resources/output_jtidy.pdf
+testing-modules/report-*.json
+
+libraries-2/*.db
+
+apache-spark/data/output
+logs/
+libraries-data-io/*.docx
+persistence-modules/spring-hibernate-5/com.*
+spring-boot-modules/spring-boot-react/frontend/build
+spring-boot-modules/spring-boot-react/frontend/node
+spring-boot-modules/spring-boot-react/frontend/yarn.lock
+spring-boot-modules/spring-boot-properties-3/*.log
+
+# SDKMan
+.sdkmanrc
+
+# Localstack
+**/.localstack

@@ -1,6 +1,5 @@
 package com.baeldung.websocket.client;
 
-import org.baeldung.websocket.client.MyStompSessionHandler;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.springframework.messaging.simp.stomp.StompHeaders;
@@ -15,6 +14,6 @@ public class MyStompSessionHandlerIntegrationTest {
         MyStompSessionHandler sessionHandler = new MyStompSessionHandler();
         sessionHandler.afterConnected(mockSession, mockHeader);
         Mockito.verify(mockSession).subscribe("/topic/messages", sessionHandler);
-        Mockito.verify(mockSession).send(Mockito.anyString(), Mockito.anyObject());
+        Mockito.verify(mockSession).send(Mockito.anyString(), Mockito.any());
     }
 }
